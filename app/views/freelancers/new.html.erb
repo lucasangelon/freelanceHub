@@ -1,0 +1,28 @@
+<h1>New Freelancer</h1>
+
+<%= form_for @freelancer, url: { action: 'create' } do |f| %>
+
+  <%# Errors section %>
+  <% if @freelancer.errors.any? %>
+    <%= pluralize(@freelancer.errors.count, "error") %> impeded the creation of this new freelancer:
+
+    <ul>
+      <% @freelancer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.label :first_name, required: true %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name, required: true %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :specialty, required: true %>
+  <%= f.text_field :specialty %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to('Cancel', root_path) %>

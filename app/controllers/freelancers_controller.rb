@@ -4,7 +4,7 @@ class FreelancersController < ApplicationController
   #
   # Displays the list of freelancers in the database.
   def index
-    #@freelancers = Freelancer.all
+    @freelancers = Freelancer.all
   end
 
   # GET /new
@@ -21,7 +21,7 @@ class FreelancersController < ApplicationController
     @freelancer = Freelancer.new(freelancer_params)
 
     if @freelancer.save
-      redirect_to index
+      redirect_to root_path
     else
       render :new
     end
