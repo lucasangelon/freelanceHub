@@ -1,5 +1,6 @@
 class Freelancer < ApplicationRecord
 
-  validates :first_name, :last_name, :specialty
+  validates :first_name, :last_name, :specialty, presence: true
 end
+
 
