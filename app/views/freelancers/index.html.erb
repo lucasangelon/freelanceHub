@@ -9,6 +9,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Specialty</th>
+        <th>Projects</th>
       </tr>
     </thead>
 
@@ -18,6 +19,24 @@
           <td><%= freelancer.first_name %></td>
           <td><%= freelancer.last_name %></td>
           <td><%= freelancer.specialty %></td>
+          <td>
+            <ul>
+
+              <%# All projects within the freelancer's relationships %>
+              <% freelancer.projects.each_with_index do |project, index| %>
+                  <li>Project: <%= project.title %></li>
+                  <li>Technologies used: <%= project.technologies %></li>
+                  <% if project.year_of_completion %>
+                    <li>Completed in: <%= project.year_of_completion %></li>
+                  <% end %>
+
+                  <%# Adding a divider to the screen %>
+                  <% if index != freelancer.projects.length - 1 %>
+                    <hr>
+                  <% end %>
+              <% end %>
+            </ul>
+          </td>
         </tr>
       <% end %>
     </tbody>

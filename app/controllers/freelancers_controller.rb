@@ -12,6 +12,7 @@ class FreelancersController < ApplicationController
   # Generates a new Freelancer object for the view.
   def new
     @freelancer = Freelancer.new
+    2.times { @freelancer.projects.build }
   end
 
   # POST /
@@ -29,7 +30,8 @@ class FreelancersController < ApplicationController
 
   private
     def freelancer_params
-      params.require(:freelancer).permit(:first_name, :last_name, :specialty)
+      params.require(:freelancer).permit(:first_name, :last_name, :specialty,
+                                         projects_attributes: [:title, :technologies, :year_of_completion])
     end
 end
 
